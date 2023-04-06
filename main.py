@@ -112,7 +112,7 @@ if __name__ == '__main__':
     var = open_val / open_shift
     df["var"] = var
     normalize = False
-    v = compute_values(0, 1, df, 12 * 20, cigarette=True)
+    v = compute_values(0, 1, df, 12 * 30, cigarette=True)
     new_df = pd.DataFrame(v, columns=["Date", "Cigarette money invested on S&P500", "Cigarettes cost",
                                       "No investment during recession",
                                       "No investment below previous high", "No investment when going down",
