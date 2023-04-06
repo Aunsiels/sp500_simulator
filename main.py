@@ -39,6 +39,9 @@ def is_recession(date, delta=pd.Timedelta(days=30*0)):
     return False
 
 
+AVERAGE_NUMBER_OF_CIGARETTES = 13 / 20  # Proportion size
+
+
 def compute_values(init_value, monthly_investment_end, variations, number_months,
                    adjust_inflation=False, buy_one_action=False, invest_every=1, cigarette=True):
     if adjust_inflation:
@@ -53,7 +56,7 @@ def compute_values(init_value, monthly_investment_end, variations, number_months
         month_year = date.strftime("%m/%Y")
         n_days = monthrange(date.year, date.month)[1]
         if cigarette:
-            monthly_investment_end = cigarettes[year] * n_days
+            monthly_investment_end = cigarettes[year] * n_days * AVERAGE_NUMBER_OF_CIGARETTES
         if adjust_inflation and date.year < 2023:
             monthly_investment = cpi.inflate(monthly_investment_end, 2022, to=date.year)
         else:
