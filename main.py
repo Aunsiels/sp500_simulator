@@ -114,10 +114,37 @@ if __name__ == '__main__':
                                       "No investment during recession",
                                       "No investment below previous high", "No investment when going down",
                                       "Livret A"])
+
     fig = px.line(new_df, x="Date", y=["Cigarette money invested on S&P500", "Cigarettes cost"],
                   markers=True, title="The Real Cost of Cigarettes")
-    fig.update_layout(xaxis_title='Date',
-                      yaxis_title='Money in euros')
+
+    fig.update_layout(
+                      paper_bgcolor='rgba(0,0,0,0)',
+                      plot_bgcolor='rgba(0,0,0,0)',
+                      xaxis=dict(
+                          title='Date',
+                          autorange=True,
+                          showgrid=False,
+                          zeroline=True,
+                          showline=True,
+                          ticks='',
+                          linecolor='black',
+                          showticklabels=True,
+                          rangemode="tozero"
+                      ),
+                      yaxis=dict(
+                          title='Money in euros',
+                          autorange=True,
+                          showgrid=False,
+                          zeroline=True,
+                          showline=True,
+                          ticks='',
+                          linecolor='black',
+                          showticklabels=True,
+                          rangemode="tozero"
+                      ),
+                      legend=dict(x=0, y=1),
+                      )
     pio.write_html(fig, file="results/cigarettes.html", auto_open=True)
     fig.show()
 
